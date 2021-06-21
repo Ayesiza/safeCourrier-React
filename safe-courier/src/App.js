@@ -4,12 +4,13 @@ import Home from './components/Home'
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Signup from './components/Signup';
 import Login from './components/Login';
+import Header from './components/Header';
 
 function App() {
   return (
     <BrowserRouter>
      <React.Fragment>
-       <Home />
+       <Header />
        <Switch>
           <Route  path="/" exact component={Home} />
           <Route path="/Signup" component={Signup} />

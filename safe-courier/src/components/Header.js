@@ -22,10 +22,10 @@ function Header() {
                 <Link to="/Tracking" className="nav-link">Tracking </Link>
             </li>
             <li className="nav-item">
-                    <Link className="nav-link"  >Contact </Link>
+                    <Link to="Contact" className="nav-link"  >Contact </Link>
             </li>
             <li className="nav-item ">
-                <Link className="nav-link"  >Sign Up </Link>
+                <Link  to="/Signup" className="nav-link"  >Sign Up </Link>
             </li>
             <div className="nav-item">
               <div className="nav-link">
