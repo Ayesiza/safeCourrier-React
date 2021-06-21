@@ -1,13 +1,11 @@
-import React from 'react'
-import Header from './Header'
-//import Signup from './Signup'
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 
 function Home() {
     return (
         <div>
-          <Header />
-         
+
             <div className="container">
         <div className="about pt-5 mb-5 ">
             <h3>About Us</h3>
@@ -42,7 +40,7 @@ function Home() {
                         <p>SafeCourier delivers Parcels to all parts of the country. We have great drivers and hands on deck who know the terrains of this country like their backyard.</p>
                       </div>
                     </div>
-                    <a href="about-us.html" className="btn btn-danger">Read More</a>
+                    <Link  className="btn btn-danger">Read More</Link>
               </div>
               <div className="col-md-6  slideInRight">
                   <img src={"/images/about-img.png"} alt="courrierman"/>                   
