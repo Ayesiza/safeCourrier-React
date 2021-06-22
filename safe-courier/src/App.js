@@ -5,6 +5,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Signup from './components/Signup';
 import Login from './components/Login';
 import Header from './components/Header';
+import Footer from './components/Footer'
 
 function App() {
   return (
@@ -16,7 +17,7 @@ function App() {
           <Route path="/Signup" component={Signup} />
           <Route  path="/Login" component={Login}/>
           </Switch>
-          
+          <Footer />
         </React.Fragment>
     </BrowserRouter>
     
