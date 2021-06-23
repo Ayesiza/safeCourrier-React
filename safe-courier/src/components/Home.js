@@ -15,26 +15,18 @@ function Home() {
                   <p>Our company is currently located in the heart of Kampala city we are working on setting up branches currently in at least 15 districts in the country.</p>
                   <div className="about-content">
                     <div>
-                        <i className="fas fa-rocket"></i>
-                    </div>
-                    <div>
                       <h5>Fast Delivery</h5>
                       <p>Despite the hitches and traffic in our country,SafeCourier ensures that parcels are delivered quickly.</p>
                     </div>
                   </div>
                   <div className="about-content">
                       <div>
-                          <i className="fas fa-lock"></i>
-                      </div>
-                      <div>
                         <h5>Secured</h5>
                         <p>With SafeCourier, security of parcels is guaranteed. we make it a point of interest to see that your goods are delivered in perfect shape.</p>
                       </div>
                     </div>
                     <div className="about-content">
-                      <div>
-                          <i className="fas fa-globe-americas"></i>
-                      </div>
+                     
                       <div>
                         <h5>National Wide Delivery</h5>
                         <p>SafeCourier delivers Parcels to all parts of the country. We have great drivers and hands on deck who know the terrains of this country like their backyard.</p>
