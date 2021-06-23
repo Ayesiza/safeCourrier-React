@@ -19,13 +19,13 @@ function Header() {
                 <Link to="/About" className="nav-link" >About </Link>
               </li>
               <li className="nav-item">
-                <Link to="/Tracking" className="nav-link">Tracking </Link>
+                <Link to="/DeliveryOrder" className="nav-link">DeliveryOrder </Link>
             </li>
             <li className="nav-item">
                     <Link to="Contact" className="nav-link"  >Contact </Link>
             </li>
             <li className="nav-item ">
-                <Link  to="/Signup" className="nav-link"  >Sign Up </Link>
+                <Link  to="/Signup" className="nav-link"  >SignUp </Link>
             </li>
             <div className="nav-item">
               <div className="nav-link">
