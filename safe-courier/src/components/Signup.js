@@ -33,7 +33,7 @@ function Signup() {
         onChange={handleChange }
         type="text" 
         class="form-control" 
-        name="firstName" placeholder="firstName" 
+        name="firstName" placeholder="FirstName" 
         required="required"/>
 			</div>
         </div>

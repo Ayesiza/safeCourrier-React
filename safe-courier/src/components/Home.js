@@ -42,7 +42,7 @@ function Home() {
         <div className="calculate-cost header-cal  fadeInUp">
           <div className="row">
             <div className="col-md-6 col-12">
-              <img src="./images/Courier-Man.png" className="image-fluid" alt="courrierman"/>
+              <img src="./images/Courier-Man.png" className="image-fluid" alt="courierman"/>
             </div>
             <div className="col-md-6 col-12">
               <h3 className="fw-b">Calculate Cost</h3>
@@ -50,7 +50,7 @@ function Home() {
                 <div className="form-group">
                   <div className="row">
                       <div className="col-md-2">
-                          <label for="email">Weight(kg):</label>
+                          <label >Weight(kg):</label>
                       </div>
                       <div className="col-md-10">
                           <input type="number" className="form-control" id="number" placeholder="kg" name="number"/>
@@ -60,7 +60,7 @@ function Home() {
                 <div className="form-group">
                     <div className="row">
                         <div className="col-md-2">
-                            <label for="email">Package:</label>
+                            <label >Package:</label>
                         </div>
                         <div className="col-md-10">
                             <input type="text" className="form-control" id="text" placeholder="Package" name="text"/>
@@ -70,7 +70,7 @@ function Home() {
                   <div className="form-group">
                     <div className="row">
                         <div className="col-md-2">
-                            <label for="email">Location:</label>
+                            <label >Location:</label>
                         </div>
                         <div className="col-md-10">
                             
