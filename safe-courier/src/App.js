@@ -7,6 +7,7 @@ import Login from './components/Login';
 import Header from './components/Header';
 import Footer from './components/Footer'
 import DeliveryOrder from './components/DeliveryOrder';
+//import EditOrder from './components/EditOrder';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route path="/Signup" component={Signup} />
           <Route  path="/Login" component={Login}/>
           <Route  path="/DeliveryOrder" component={DeliveryOrder}/>
+          {/* <Route  path="/EditOrder" component={EditOrder}/> */}
           </Switch>
           <Footer />
         </React.Fragment>
