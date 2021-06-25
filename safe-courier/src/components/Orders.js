@@ -1,3 +1,47 @@
+import React, { useEffect, useState }  from 'react'
+//import data from '../data'
+import axios from 'axios';
+
+function Orders() {
+
+    const [orders, setOrders] = useState([]);
+
+    useEffect(() => {
+        const fetchData = async () =>{
+            const {data} =await axios.get("/api/orders");
+            setOrders(data);
+        }
+        fetchData();
+        return () => {
+            //
+        };
+       
+    }, [])
+    return (
+        <div className="parcel-list">
+
+         <ul className="parcel">
+             {
+                 orders.map(order =>
+                    <li key={order._id}>
+                        <h4>{order.item}</h4>
+                        <h6>{order.receipient}</h6>
+                        <h6>{order.address}</h6>
+                        <h6>{order.status}</h6>
+                    </li>
+                    )
+             }
+            
+        </ul>   
+        </div> 
+
+           
+        
+    )
+}
+
+export default Orders
+
 // import React, { useState } from 'react'
 
 // function Parcel({parcel, index}) {
