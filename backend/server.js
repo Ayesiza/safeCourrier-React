@@ -1,11 +1,23 @@
-import express from "express";
-import data from './data';
+import express  from'express';
+import cors  from'cors';
+import './config'
+import apiRouter from  './routers/apiRouters'
+
+ 
+ require('dotenv').config();
 
 const app = express();
 
-app.get("/api/orders", (req, res) =>{
-    
-    res.send(data.orders)
-});
 
-app.listen(5000, () =>{ console.log("server started at http://localhost:5000") })
+
+app.use(express.json());
+app.use(cors())
+app.use('/api', apiRouter)
+
+
+const port = process.env.PORT;
+app.listen(port, () => { 
+    console.log(`server is running on port: ${port}`)
+})
+
+module.exports = app;
