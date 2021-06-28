@@ -35,7 +35,16 @@ const OrderControllers ={
             }
         })
     },
+cancelDelivery: (req, res) => {
+    Order.findByIdAndDelete(req.params.id).then((order) => {
+        if(order){
+            return res.status(200).json({message:'Order Cancelled'});
+        }else{
+            return res.status(404).json({error:'Order of the given id not found'})
+        }
+    })
 
+},
 createOrders:async(req, res) => {
     const {userId}= req.params
     const newOrder = new Order(req.body);

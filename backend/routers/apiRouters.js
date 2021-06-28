@@ -8,10 +8,11 @@ const router = express.Router();
  router.post('/user/signup', UserController.signup);
  router.post('/user/login', UserController.login);
 
- router.post('/order', OrderControllers.createDeliveryOrdery)
- router.post('/orders/:userId', OrderControllers.createOrders)
+ router.post('/order', OrderControllers.createDeliveryOrdery);
+ router.post('/orders/:userId', OrderControllers.createOrders);
  router.get('/orders', OrderControllers.getAllOrders);
- router.put('/order/:id', OrderControllers.ChangeDestination)
+ router.put('/order/:id', OrderControllers.ChangeDestination);
+ router.delete('/order/:id', OrderControllers.cancelDelivery)
 
 
 
