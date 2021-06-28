@@ -16,7 +16,13 @@ const OrderControllers ={
        });   
     },
 
-    getAllOrders: (res, req) => {
+    getAllOrders: (req, res) => {
+        Order.find({}).then((orders) =>{
+            if(orders) {
+                return res.status(200).json({orders})
+            }else
+            return res.status(400).json({message:'No orders found'})
+        });
      
     },
 
@@ -24,7 +30,7 @@ createOrders:async(req, res) => {
     const {userId}= req.params
     const newOrder = new Order(req.body);
     const user = await User.findById(userId);
-    newOrder.userName =user;
+    newOrder.user =user;
     await newOrder.save();
     user.orders.push(newOrder);
     await user.save();
