@@ -1,6 +1,10 @@
 import { Schema } from 'mongoose';
 
 const orderSchema = new Schema({
+    userName:{
+        type:String,
+        required:true,
+    },
     parcelName:{
         type:String,
         required:true,
@@ -21,9 +25,7 @@ const orderSchema = new Schema({
         type:String,
         required:true,
     },
-    user:
-        
-            {type: Schema.Types.ObjectId, ref: 'users'}
+    user:{type: Schema.Types.ObjectId, ref: 'users'}
           
   
 
