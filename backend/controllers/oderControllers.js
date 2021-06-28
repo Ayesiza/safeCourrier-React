@@ -25,6 +25,16 @@ const OrderControllers ={
         });
      
     },
+    
+    ChangeDestination:(req, res) =>{
+        Order.findByIdAndUpdate(req.params.id, req.body, {new:true}).then((order)=> {
+            if(order){
+                return res.status(200).json({message:'Destination changed', order})
+            }else{
+                return res.status(404).json({message:'Order of the given id not found'})
+            }
+        })
+    },
 
 createOrders:async(req, res) => {
     const {userId}= req.params

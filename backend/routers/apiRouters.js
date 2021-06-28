@@ -11,7 +11,7 @@ const router = express.Router();
  router.post('/order', OrderControllers.createDeliveryOrdery)
  router.post('/orders/:userId', OrderControllers.createOrders)
  router.get('/orders', OrderControllers.getAllOrders);
- //router.get('/order',OrderControllers.getAllOrders)
+ router.put('/order/:id', OrderControllers.ChangeDestination)
 
 
 
