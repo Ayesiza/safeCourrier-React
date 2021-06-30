@@ -1,5 +1,4 @@
 import Order from '../modals/orders';
-import User from '../modals/users';
 
 const OrderControllers ={
     createDeliveryOrder:(req, res) => {
@@ -45,19 +44,8 @@ cancelDelivery: (req, res) => {
     })
 
 },
-// createOrders:async(req, res) => {
-//     const {userId}= req.params
-//     const newOrder = new Order(req.body);
-//     const user = await User.findById(userId);
-//     newOrder.user =user;
-//     await newOrder.save();
-//     user.orders.push(newOrder);
-//     await user.save();
-//     res.status(201).json(newOrder)
-    
-
-// }
 
 }
 
 export default OrderControllers;
+

@@ -1,7 +1,7 @@
 import express  from'express';
 import cors  from'cors';
-import './config'
-import apiRouter from  './routers/apiRouters'
+import './backend/config'
+import apiRouter from  './backend/routers/apiRouters'
 
  
  require('dotenv').config();
@@ -15,7 +15,7 @@ app.use(cors())
 app.use('/api', apiRouter)
 
 
-const port = process.env.PORT;
+const port = process.env.PORT|| 3000 ;
 app.listen(port, () => { 
     console.log(`server is running on port: ${port}`)
 })
