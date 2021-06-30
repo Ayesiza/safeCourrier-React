@@ -18,11 +18,8 @@ const usersSchema = new Schema({
         type:String,
         required:true
     },
-    order:
-    [
-        {type: Schema.Types.ObjectId, ref: 'orders'}
-       
-    ]
+    
+   
 }, {timestamps: true})
 
 export default usersSchema;
