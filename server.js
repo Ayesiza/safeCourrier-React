@@ -13,6 +13,9 @@ const app = express();
 app.use(express.json());
 app.use(cors())
 app.use('/api', apiRouter)
+app.get('/',(req, res) => {
+    res.send({message:"welcome to safeCourrier"})
+});
 
 
 const port = process.env.PORT|| 3000 ;
