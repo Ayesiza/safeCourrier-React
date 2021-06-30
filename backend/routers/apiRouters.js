@@ -2,18 +2,17 @@ import express from 'express';
 const router = express.Router();
  import UserController from '../controllers/userControllers';
  import OrderControllers from '../controllers/oderControllers';
+ import authMiddleware from '../middleware/auth'
 
 
  //authRoutes
- router.post('/user/signup', UserController.signup);
+ router.post('/user/signup',authMiddleware.userAreadyExist, UserController.signup);
  router.post('/user/login', UserController.login);
-
- router.post('/order', OrderControllers.createDeliveryOrdery);
- router.post('/orders/:userId', OrderControllers.createOrders);
- router.get('/orders', OrderControllers.getAllOrders);
- router.put('/order/:id', OrderControllers.ChangeDestination);
- router.delete('/order/:id', OrderControllers.cancelDelivery)
+ router.post('/order',authMiddleware.getToken,authMiddleware.verifyToken, OrderControllers.createDeliveryOrder);
+ router.get('/orders',authMiddleware.getToken,authMiddleware.verifyToken, OrderControllers.getAllOrders);
+ router.put('/order/:id',authMiddleware.getToken,authMiddleware.verifyToken, OrderControllers.ChangeDestination);
+ router.delete('/order/:id', authMiddleware.getToken,authMiddleware.verifyToken, OrderControllers.cancelDelivery)
 
 
 
-export default router
+export default router;

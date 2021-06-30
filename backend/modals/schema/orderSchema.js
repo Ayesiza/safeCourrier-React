@@ -25,10 +25,7 @@ const orderSchema = new Schema({
         type:String,
         required:true,
     },
-    user:{type: Schema.Types.ObjectId, ref: 'users'}
-          
-  
-
+   
 }, {timestamps:true});
 
 export default orderSchema;

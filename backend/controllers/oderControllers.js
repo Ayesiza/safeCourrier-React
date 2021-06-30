@@ -2,7 +2,7 @@ import Order from '../modals/orders';
 import User from '../modals/users';
 
 const OrderControllers ={
-    createDeliveryOrdery:(req, res) => {
+    createDeliveryOrder:(req, res) => {
         const  { userName,  parcelName,receipient, destination, status, phone} = req.body
         const newOrder = new Order({userName, parcelName,receipient, destination, status, phone})
        newOrder.save()
@@ -45,18 +45,18 @@ cancelDelivery: (req, res) => {
     })
 
 },
-createOrders:async(req, res) => {
-    const {userId}= req.params
-    const newOrder = new Order(req.body);
-    const user = await User.findById(userId);
-    newOrder.user =user;
-    await newOrder.save();
-    user.orders.push(newOrder);
-    await user.save();
-    res.status(201).json(newOrder)
+// createOrders:async(req, res) => {
+//     const {userId}= req.params
+//     const newOrder = new Order(req.body);
+//     const user = await User.findById(userId);
+//     newOrder.user =user;
+//     await newOrder.save();
+//     user.orders.push(newOrder);
+//     await user.save();
+//     res.status(201).json(newOrder)
     
 
-}
+// }
 
 }
 

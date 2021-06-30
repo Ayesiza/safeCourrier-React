@@ -1,5 +1,6 @@
 import User from '../modals/users';
 import authHelper from '../middleware/utils';
+import Helpers from '../middleware/helpers'
 import bcrypt from 'bcrypt';
 
 
@@ -27,10 +28,10 @@ require ('dotenv').config();
       login: (req, res) => {
         const { email, password } = req.body;
         User.findOne({ email }, (err, user) => {
-          if (!user) return res.send({error: 401, message:'user does not exist'});
+         if (!user) return res.send({error: 401, message:'user does not exist'});
           if (authHelper.comparePassword(password, user.password)) {
             user.password = undefined;
-            const token = authHelper.createToken({
+            const token = Helpers.signToken({
               _id: user._id,
               email: user.email,
             });
