@@ -10,7 +10,7 @@ function Home() {
         <div className="about pt-5 mb-5 ">
             <h3>About Us</h3>
             <div className="row">
-              <div className="col-md-6  fadeInUp ">
+              <div className="col-md-6 ">
                 <p>Safe Courier is a courier service that helps users deliver parcels to different destinations. Safe Courier provides courier quotes based on weight categories..</p> 
                   <p>Our company is currently located in the heart of Kampala city we are working on setting up branches currently in at least 15 districts in the country.</p>
                   <div className="about-content">
@@ -39,7 +39,7 @@ function Home() {
               </div>
             </div>
         </div>
-        <div className="calculate-cost header-cal  fadeInUp">
+        <div className="calculate-cost header-cal ">
           <div className="row">
             <div className="col-md-6 col-12">
               <img src="./images/Courier-Man.png" className="image-fluid" alt="courierman"/>

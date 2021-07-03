@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Link} from "react-router-dom";
+import { Link, Redirect} from "react-router-dom";
+
 
 
 function Signup() {
@@ -7,13 +8,38 @@ function Signup() {
   const [submitted, setSubmitted] = useState(false)
  
  const handleChange= (e)=>{
-   setText({...text, value:e.target.value})
+   setText({...text, [e.target.name]:e.target.value})
  }
 
   const handleSubmit=(e) =>{
     e.preventDefault()
-    setSubmitted(true);
+    console.log(text)
+    fetch('https://safe-couriers.herokuapp.com/api/user/signup', {
+      headers:{"Content-Type":"application/json"},
+      method:"POST",
+      body:JSON.stringify({
+        userName:text.userName,
+        email:text.email,
+        password:text.password
+      })
+    })
+    .then(async (data) =>{
+      if(data.ok) {
+      console.log(await data.json())
+      }
+     
+    })
+    .then( ()=>{
+      setSubmitted(true);
+    })
+    .catch(error =>{
+      console.log(error)
+    })
+  };
+  if(submitted) {
+    return <Redirect to='/DeliveryOrder'/>
   }
+
 
   return (
     <div class="brgcolor">
@@ -29,11 +55,11 @@ function Signup() {
 				
 				</div>
         <input 
-        value={text.firstName} 
+        value={text.userName} 
         onChange={handleChange }
         type="text" 
         class="form-control" 
-        name="firstName" placeholder="FirstName" 
+        name="userName" placeholder="userName" 
         required="required"/>
 			</div>
         </div>
@@ -48,7 +74,7 @@ function Signup() {
         type="email"
          class="form-control" 
          name="email"
-          placeholder="Email Address"
+          placeholder="Email"
           required="required"/>
 			</div>
         </div>

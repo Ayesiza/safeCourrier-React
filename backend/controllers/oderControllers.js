@@ -34,6 +34,18 @@ const OrderControllers ={
             }
         })
     },
+    changeLocation: (req,res) => {
+        Order.findByIdAndUpdate(req.params.id, req.body).then((order)=> {
+            if(order){
+                return res.status(200).json({message:'location changed', order})
+            }else{
+                return res.status(404).json({message:'Order of the given id not found'})
+            }
+        })
+    
+        
+    },
+    
 cancelDelivery: (req, res) => {
     Order.findByIdAndDelete(req.params.id).then((order) => {
         if(order){
@@ -44,6 +56,7 @@ cancelDelivery: (req, res) => {
     })
 
 },
+
 
 }
 
