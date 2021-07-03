@@ -4,21 +4,38 @@ import { Link } from 'react-router-dom';
 
 function Login() {
   
-    const [values, setValues] = useState("")
+    const [text, setText] = useState("")
     const [submitted, setSubmitted] = useState(false)
    
    
    const handleChange= (e)=>{
-     setValues({...values, value:e.target.value})
+    setText({...text, [e.target.name]:e.target.value})
    };
-  
-  
-  
   
     const handleSubmit=(e) =>{
       e.preventDefault()
-      setSubmitted(true);
-    }
+      setSubmitted(true); fetch('https://safe-couriers.herokuapp.com/api/user/', {
+        headers:{"Content-Type":"application/json"},
+        method:"POST",
+        body:JSON.stringify({
+          email:text.email,
+          password:text.password
+        })
+      })
+      .then(async (data) =>{
+        if(data.ok) {
+        console.log(await data.json())
+        }
+        console.log("error")
+      })
+      .then( ()=>{
+        setSubmitted(true);
+      })
+      .catch(error =>{
+        console.log(error)
+      })
+    };
+    
   
     return (
        
@@ -34,7 +51,7 @@ function Login() {
                   <div class="input-group-prepend">
                   </div>
           <input 
-          value={values.email}
+          value={text.email}
           onChange={handleChange }
           type="email"
            class="form-control" 
@@ -52,7 +69,7 @@ function Login() {
                   </div>
                   
           <input 
-          value={values.password}
+          value={text.password}
           onChange={handleChange }
           type="password" 
           class="form-control" 
