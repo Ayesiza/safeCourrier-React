@@ -46,6 +46,15 @@ require ('dotenv').config();
           return res.send( {error:401, message:'Invalid login details'});
         });
       },
+      getUsers: (req, res) => {
+        User.find({}).then((users) =>{
+            if(users) {
+                return res.status(200).json({users})
+            }else
+            return res.status(400).json({message:'No user found'})
+        });
+     
+    },
     };
 
 

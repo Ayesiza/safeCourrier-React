@@ -16,15 +16,16 @@ const authMiddleware = {
     
        },
        verifyToken(req, res, next){
-        jwt.verify(req.token, process.env.APP_KEY, (err, user) => {
+        jwt.verify(req.token, process.env.APP_KEY, (err, decode) => {
             if (err) return res.status(403).json({ error: 403, message: err.message });
-            req.user = user
+            req.user = decode
             next();
           });
        },
       
+      
      findUser: async (req, res, next) => {
-    const { email, password } = req.body;
+    const { email } = req.body;
     User.findOne({ email }, (err, user) => {
       if (!user) return res.send({error: 401, message:'User does not exist'});
       return next();
@@ -37,10 +38,14 @@ const authMiddleware = {
       })
   },
 
-// userAdmin:async (req, res, next)=> {
-//     if(req.user.isAdmin === false)return res.send({message:'For only admin'});
-//     next();
-//   },
+ userAdmin:async (req, res, next)=> {
+  console.log(req.user)
+    if(req.user && req.user.isAdmin){
+      return next();
+    }
+    return res.send({message:'For only admin'});
+
+   },
   
 
 };

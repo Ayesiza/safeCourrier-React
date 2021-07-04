@@ -35,7 +35,7 @@ const OrderControllers ={
         })
     },
     changeLocation: (req,res) => {
-        Order.findByIdAndUpdate(req.params.id, req.body).then((order)=> {
+        Order.findByIdAndUpdate(req.params.id, req.body, {new:true}).then((order)=> {
             if(order){
                 return res.status(200).json({message:'location changed', order})
             }else{
