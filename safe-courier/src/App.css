@@ -2,6 +2,7 @@ body,
 a {
   font-family: "Nunito Sans", sans-serif;
 }
+
 .dropdown > .dropdown-menu {
   top: 200%;
   transition: 0.3s all ease-in-out;
@@ -570,6 +571,11 @@ li:not(:first-child) {
 }
 ul{
   list-style-type: none;
+}
+
+.link-text {
+  text-decoration: none;
+  color: #000000;
 }
 
 
