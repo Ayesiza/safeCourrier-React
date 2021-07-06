@@ -34,7 +34,7 @@ function Home() {
                     </div>
                     <Link  className="btn btn-danger">Read More</Link>
               </div>
-              <div className="col-md-6  slideInRight">
+              <div className="col-md-6  ">
                   <img src={"/images/about-img.png"} alt="courrierman"/>                   
               </div>
             </div>
@@ -42,7 +42,7 @@ function Home() {
         <div className="calculate-cost header-cal ">
           <div className="row">
             <div className="col-md-6 col-12">
-              <img src="./images/Courier-Man.png" className="image-fluid" alt="courierman"/>
+              <img src={"./images/Courier-Man.png"} className="image-fluid" alt="courierman"/>
             </div>
             <div className="col-md-6 col-12">
               <h3 className="fw-b">Calculate Cost</h3>
