@@ -1,12 +1,25 @@
-import React  from 'react'
+import React, { useEffect, useState }  from 'react';
 import {Link} from 'react-router-dom';
-import data from '../data'
-//import axios from 'axios';
+import { useDispatch, useSelector } from 'react-redux';
+import { listOrders } from '../actions/orderActions';
 
 function Orders(props) {
 
-   
-    return (
+   const orderList = useSelector(state => state.orderList);
+   const { orders, loading, error} =orderList;
+   const dispatch =useDispatch();
+
+
+   useEffect(() =>{
+     dispatch(listOrders());
+
+             
+       return ()=> {
+  //
+       };
+   }, [])
+    return loading ? <div>Loading...</div> :
+    error ? <div>{error}</div> :
         <div className="container">
               <div className="dashboard-content-holder mb-3 ">
                 <h3>USER DASHBOARD</h3>           
@@ -43,9 +56,9 @@ function Orders(props) {
                               <th>status</th>
                               <th>Action</th>
                             </tr>
-                        </tfoot>
+                        </tfoot> 
                         <tbody>
-                           { data.orders.map( order => (<tr key={order._id}>
+                           { orders.map( order => (<tr key={order._id}>
                          
                             <td>{order._id}</td>
                             <td><Link className="link-text" to={"/order/" + order._id}>{order.parcelName}</Link></td>  
@@ -68,7 +81,7 @@ function Orders(props) {
                     
                 </div>
                 </div>
-    )
+    
 }
 
 export default Orders
