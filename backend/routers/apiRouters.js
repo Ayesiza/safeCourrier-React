@@ -11,7 +11,7 @@ const router = express.Router();
  router.get('/user', UserController.getUsers);
  //order Routes
  router.post('/order',authMiddleware.getToken,authMiddleware.verifyToken, OrderControllers.createDeliveryOrder);
- router.get('/orders',authMiddleware.getToken,authMiddleware.verifyToken, OrderControllers.getAllOrders);
+ //router.get('/orders',authMiddleware.getToken,authMiddleware.verifyToken, OrderControllers.getAllOrders);
  router.put('/order/:id',authMiddleware.getToken,authMiddleware.verifyToken, authMiddleware.userAdmin, OrderControllers.ChangeDestination);
  router.patch('/orders/:id',authMiddleware.getToken,authMiddleware.verifyToken, OrderControllers.changeLocation);
  router.delete('/order/:id', authMiddleware.getToken,authMiddleware.verifyToken, OrderControllers.cancelDelivery)

@@ -1,6 +1,9 @@
 import React from 'react'
+import data from '../data';
 
 function Order(props) {
+    console.log(props.match.params.id);
+    const order = data.orders.find(x =>x._id === props.match.params.id )
     return <div>
         <div className="breadcrum ">
       <div className="container">
@@ -26,28 +29,28 @@ function Order(props) {
                    <table className="table table-striped table-bordered ">
                      <tr>
                        <td>ParcelName</td>
-                       <td>HP laptop</td>
-                       
+                       <td>{order.parcelName}</td>
+
                       </tr> 
                       <tr>
                         <td>Phone</td>
-                        <td>1232734</td>
+                        <td>{order.phone}</td>
                       </tr> 
                       <tr>
                         <td>UserName</td>
-                        <td>1232734</td>
+                        <td>{order.userName}</td>
                       </tr> 
                       <tr>
                         <td>Destination</td>
-                        <td>kampala</td>
+                        <td>{order.destination}</td>
                       </tr> 
                       <tr>
                         <td>Order Status</td>
-                        <td>Delivered</td>
+                        <td>{order.status}</td>
                       </tr> 
                       <tr>
                         <td>Receipient</td>
-                        <td>yesiha</td>
+                        <td>{order.receipient}</td>
                       </tr>  
                    </table>
                 </div>
