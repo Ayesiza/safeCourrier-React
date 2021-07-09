@@ -1,16 +1,29 @@
-import React from 'react'
-import data from '../data';
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux';
+import { detailsOrder } from '../actions/orderActions';
+
 
 function Order(props) {
-    console.log(props.match.params.id);
-    const order = data.orders.find(x =>x._id === props.match.params.id )
+    const orderDetails = useSelector(state => state.orderDetails);
+    const {order, loading, error} = orderDetails;
+    const dispatch = useDispatch();
+
+    useEffect(()=> {
+        dispatch(detailsOrder(props.match.params.id));
+         return () =>{
+             //
+         };
+
+    },[])
     return <div>
         <div className="breadcrum ">
       <div className="container">
         <h1>Parcel Details</h1>
       </div>
     </div>
-    <div className="container">
+    {loading ? <div>Loading... </div> :
+error ? <div>{error} </div>:(
+<div className="container">
       <div className="about pt-6 mb-5 ">
  
         <div className="row ">
@@ -26,6 +39,7 @@ function Order(props) {
           <div className="col-md-6">
             <div className="card  mb-5">
                 <div className="card-body">
+               
                    <table className="table table-striped table-bordered ">
                      <tr>
                        <td>ParcelName</td>
@@ -59,6 +73,9 @@ function Order(props) {
           </div>
           </div>
     </div>
+
+)}  
+    
     </div>
    
 }

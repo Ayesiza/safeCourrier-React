@@ -15,7 +15,15 @@ app.use('/api', apiRouter)
 app.get('/',(req, res) => {
     res.send({message:"welcome to safeCourrier"})
 });
-app.get("/api/orders", (req, res) => {
+app.get("/api/orders/:id", (req, res) => {
+    const orderId = req.params.id;
+    const order = data.orders.find(x => x._id === orderId);
+    if (order)
+      res.send(order);
+    else
+      res.status(404).send({ msg: "Order Not Found." })
+  });
+  app.get("/api/orders", (req, res) => {
     res.send(data.orders);
   });
   
