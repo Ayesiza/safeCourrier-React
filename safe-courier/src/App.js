@@ -13,7 +13,7 @@ import Order from  './components/Order';
 function App() {
   return (
     <BrowserRouter>
-     <React.Fragment>
+     
        <Header />
        <Switch>
           <Route  path="/" exact={true} component={Home} />
@@ -25,7 +25,7 @@ function App() {
           
           </Switch>
           <Footer />
-        </React.Fragment>
+       
     </BrowserRouter>
     
   );

@@ -46,7 +46,7 @@ function Footer() {
                 </ul>
             </div>
             <div className="col-xl-auto col-md-6 col-12 pt-4 my-sm-0 order-6 ">
-                <div className="form-group "><label for="email" className="mb-3"><b>Subscribe to our newsletter and Get 10% off</b></label><input type="email" className="form-control form-control-lg" placeholder="Enter email" id="email"/></div><button type="button" className="btn btn-primary btn-lg btn-block my-2 Subscribe mt-4 mb-3">Subscribe</button>
+                <div className="form-group "><label htmlFor="email" className="mb-3"><b>Subscribe to our newsletter and Get 10% off</b></label><input type="email" className="form-control form-control-lg" placeholder="Enter email" id="email"/></div><button type="button" className="btn btn-primary btn-lg btn-block my-2 Subscribe mt-4 mb-3">Subscribe</button>
             </div>
         </div>
       
