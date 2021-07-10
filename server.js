@@ -1,5 +1,6 @@
 import express  from'express';
 import cors  from'cors';
+import bodyParser from 'body-parser';
 import './backend/config';
 import data from './backend/data';
 import apiRouter from  './backend/routers/apiRouters'
@@ -10,6 +11,7 @@ import apiRouter from  './backend/routers/apiRouters'
 const app = express();
 
 app.use(express.json());
+app.use(bodyParser.json())
 app.use(cors())
 app.use('/api', apiRouter)
 app.get('/',(req, res) => {

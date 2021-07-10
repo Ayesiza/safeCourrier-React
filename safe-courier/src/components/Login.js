@@ -1,38 +1,34 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { login } from "../actions/userActions";
 
-function Login() {
-  const [text, setText] = useState("");
-  const [submitted, setSubmitted] = useState(false);
+function Login(props) {
+  const [email, setEmail] =useState("");
+  const [password, setPassword ] =useState("");
 
-  const handleChange = (e) => {
-    setText({ ...text, [e.target.name]: e.target.value });
+const userLogin = useSelector(state => state.userLogin);
+const { loading, userInfo, error } = userLogin;
+const dispatch = useDispatch();
+
+useEffect(() =>{
+  if(userInfo){
+    props.history.push("/");
+  }
+  return () => {
+    //
   };
+},[userInfo])
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    fetch("https://safe-couriers.herokuapp.com/api/user/login", {
-      headers: { "Content-Type": "application/json" },
-      method: "POST",
-      body: JSON.stringify({
-        email: text.email,
-        password: text.password,
-      }),
-    })
-      .then(async (data) => {
-        if (data.ok) {
-          console.log(await data.json());
-        }
-        console.log("I have To fix this");
-      })
-      .then(() => {
-        setSubmitted(true);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
-
+    dispatch(login(email, password))
+ 
+      
+    }
+    
+     
   return (
     <div class="brgcolor">
       <div class="signup-form">
@@ -40,15 +36,15 @@ function Login() {
           <h2>Login Form</h2>
           <p>Please fill in the form to Login!</p>
           <hr />
-          {submitted ? (
-            <div className="popup-msg">Success! You are Loggedin</div>
-          ) : null}
+        <div>
+          {loading && <div>Loading...</div>}
+          {error && <div>{error}</div>}
+        </div>
           <div class="form-group">
             <div class="input-group">
               <div class="input-group-prepend"></div>
               <input
-                value={text.email}
-                onChange={handleChange}
+                onChange={(e) => setEmail(e.target.value)}
                 type="email"
                 class="form-control"
                 name="email"
@@ -62,8 +58,7 @@ function Login() {
               <div class="input-group-prepend"></div>
 
               <input
-                value={text.password}
-                onChange={handleChange}
+                onChange={(e) => setPassword(e.target.value)}
                 type="password"
                 class="form-control"
                 required="required"
