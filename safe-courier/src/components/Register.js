@@ -1,45 +1,32 @@
-import React, { useState } from 'react';
-import { Link, Redirect} from "react-router-dom";
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { register } from '../actions/userActions';
 
+function Register(props) {
 
+  const [userName, setUserName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [rePassword, setRePassword] = useState('');
+  const userRegister = useSelector(state => state.userRegister);
+  const { loading, userInfo, error } = userRegister;
+  const dispatch = useDispatch();
 
-function Signup() {
-   const [text, setText] = useState('')
-  const [submitted, setSubmitted] = useState(false)
- 
- const handleChange= (e)=>{
-   setText({...text, [e.target.name]:e.target.value})
- }
+  useEffect(() => {
+    if (userInfo) {
+      props.history.push("/");
+    }
+    return () => {
+      //
+    };
+  }, [userInfo]);
 
-  const handleSubmit=(e) =>{
-    e.preventDefault()
-    console.log(text)
-    fetch('https://safe-couriers.herokuapp.com/api/user/signup', {
-      headers:{"Content-Type":"application/json"},
-      method:"POST",
-      body:JSON.stringify({
-        userName:text.userName,
-        email:text.email,
-        password:text.password
-      })
-    })
-    .then(async (data) =>{
-      if(data.ok) {
-      console.log(await data.json())
-      }
-     
-    })
-    .then( ()=>{
-      setSubmitted(true);
-    })
-    .catch(error =>{
-      console.log(error)
-    })
-  };
-  if(submitted) {
-    return <Redirect to='/DeliveryOrder'/>
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(register(userName, email, password));
+
   }
-
 
   return (
     <div class="brgcolor">
@@ -48,15 +35,17 @@ function Signup() {
 		<h2>Sign Up</h2>
 		<p>Please fill in this form to create an account!</p>
 		<hr/>
-   { submitted ? <div className="popup-msg">Success! Thank you registering</div> : null}
-        <div class="form-group">
+   <div>
+   {loading && <div>Loading...</div>}
+          {error && <div>{error}</div>}
+   </div>
+      <div class="form-group">
 			<div class="input-group">
 				<div class="input-group-prepend">
 				
 				</div>
         <input 
-        value={text.userName} 
-        onChange={handleChange }
+        onChange={(e) => setUserName(e.target.value)}
         type="text" 
         class="form-control" 
         name="userName" placeholder="userName" 
@@ -69,8 +58,8 @@ function Signup() {
 					
 				</div>
         <input 
-        value={text.email}
-        onChange={handleChange }
+       
+        onChange={(e) => setEmail(e.target.value)}
         type="email"
          class="form-control" 
          name="email"
@@ -84,13 +73,28 @@ function Signup() {
 				
 				</div>
         <input 
-        value={text.password}
-        onChange={handleChange }
+       
+        onChange={(e) => setPassword(e.target.value)}
         type="password" 
         class="form-control" 
         name="password" 
         placeholder="Password" 
         required="required"/>
+			</div>
+        </div>
+        <div class="form-group">
+			<div class="input-group">
+				<div class="input-group-prepend">
+					
+				</div>
+        <input 
+       
+        onChange={(e) => setRePassword(e.target.value)}
+        type="password"
+         class="form-control" 
+         name="repassword"
+          placeholder="Re-enter Password"
+          required="required"/>
 			</div>
         </div>
 	
@@ -113,4 +117,4 @@ function Signup() {
   )
 }
 
-export default Signup
+export default Register
