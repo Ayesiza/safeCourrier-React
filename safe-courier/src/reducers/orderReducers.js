@@ -1,4 +1,4 @@
-import { ORDER_DETAILS_FAIL, ORDER_DETAILS_REQUEST, ORDER_DETAILS_SUCCESS, ORDER_LIST_FAIL, ORDER_LIST_REQUEST, ORDER_LIST_SUCCESS } from "../constants/orderConstants";
+import { ORDER_DETAILS_FAIL, ORDER_DETAILS_REQUEST, ORDER_DETAILS_SUCCESS, ORDER_LIST_FAIL, ORDER_LIST_REQUEST, ORDER_LIST_SUCCESS, ORDER_SAVE_FAIL, ORDER_SAVE_REQUEST, ORDER_SAVE_SUCCESS } from "../constants/orderConstants";
 
 
 function orderListReducer(state = { orders: []}, action) {
@@ -13,7 +13,7 @@ function orderListReducer(state = { orders: []}, action) {
         default:
             return state;
     }
-}
+};
 
 function orderDetailsReducer(state = { order: {} }, action) {
 
@@ -27,5 +27,19 @@ function orderDetailsReducer(state = { order: {} }, action) {
         default:
             return state;
     }
-}
-export  {orderListReducer, orderDetailsReducer};
+};
+
+function orderSaveReducer(state = { order: {} }, action) {
+
+  switch (action.type) {
+      case ORDER_SAVE_REQUEST:
+        return { loading:true };
+      case ORDER_SAVE_SUCCESS:
+        return { loading: false,success:true, order:action.payload};
+      case ORDER_SAVE_FAIL:
+          return {loading: false, error: action.payload};
+      default:
+          return state;
+  }
+};
+export  {orderListReducer, orderDetailsReducer, orderSaveReducer};
