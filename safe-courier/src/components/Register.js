@@ -24,7 +24,7 @@ function Register(props) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(register(userName, email, password));
+    dispatch(register(userName, email, password, rePassword));
 
   }
 

@@ -30,8 +30,8 @@ useEffect(() =>{
     
      
   return (
-    <div class="brgcolor">
-      <div class="signup-form">
+    <div className="brgcolor">
+      <div className="signup-form">
         <form onSubmit={handleSubmit}>
           <h2>Login Form</h2>
           <p>Please fill in the form to Login!</p>
@@ -40,39 +40,39 @@ useEffect(() =>{
           {loading && <div>Loading...</div>}
           {error && <div>{error}</div>}
         </div>
-          <div class="form-group">
-            <div class="input-group">
-              <div class="input-group-prepend"></div>
+          <div className="form-group">
+            <div className="input-group">
+              <div className="input-group-prepend"></div>
               <input
                 onChange={(e) => setEmail(e.target.value)}
                 type="email"
-                class="form-control"
+                className="form-control"
                 name="email"
                 required="required"
                 placeholder="Email"
               />
             </div>
           </div>
-          <div class="form-group">
-            <div class="input-group">
-              <div class="input-group-prepend"></div>
+          <div className="form-group">
+            <div className="input-group">
+              <div className="input-group-prepend"></div>
 
               <input
                 onChange={(e) => setPassword(e.target.value)}
                 type="password"
-                class="form-control"
+                className="form-control"
                 required="required"
                 name="password"
                 placeholder="Password"
               />
             </div>
           </div>
-          <div class="form-group">
-            <button type="submit" class="btn btn-lg">
+          <div className="form-group">
+            <button type="submit" className="btn btn-lg">
               Login
             </button>
           </div>
-          <div class="text-center">
+          <div className="text-center">
             Don't have an account?
             <Link to="/Signup">
               <span>Signup here</span>

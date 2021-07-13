@@ -53,7 +53,7 @@ function Home() {
                           <label >Weight(kg):</label>
                       </div>
                       <div className="col-md-10">
-                          <input type="number" className="form-control" id="number" placeholder="kg" name="number"/>
+                          <input type="number" className="form-control"  placeholder="kg" name="number"/>
                       </div>
                   </div>
                 </div> 
@@ -63,7 +63,7 @@ function Home() {
                             <label >Package:</label>
                         </div>
                         <div className="col-md-10">
-                            <input type="text" className="form-control" id="text" placeholder="Package" name="text"/>
+                            <input type="text" className="form-control"  placeholder="Package" name="text"/>
                         </div>
                     </div>
                   </div> 
@@ -75,8 +75,8 @@ function Home() {
                         <div className="col-md-10">
                             
                           <div className="locat-input">
-                            <input type="text" className="form-control mr-3" id="text" placeholder="From" name="text"/>
-                            <input type="text" className="form-control ml-3" id="text" placeholder="To" name="text"/>
+                            <input type="text" className="form-control mr-3"  placeholder="From" name="text"/>
+                            <input type="text" className="form-control ml-3" placeholder="To" name="text"/>
                         </div>
                         </div>
                     </div>
