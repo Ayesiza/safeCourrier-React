@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { saveOrder } from '../actions/orderActions';
+import { listOrders, saveOrder } from '../actions/orderActions';
 
 
 function DeliveryOrder(props) {
@@ -11,15 +11,14 @@ function DeliveryOrder(props) {
   const [phone, setPhone] = useState('');
   const [receipient, setReceipient] = useState('');
   const [destination, setDestination] = useState('');
-  
-  
-
+  const orderList  = useSelector(state => state.orderList)
+  const {loading, orders, error} = orderList
   const orderSave = useSelector(state => state.orderSave);
   const {loading: loadingSave, success:successSave, error:errorSave}= orderSave; 
-
   const dispatch = useDispatch();
 
   useEffect(()=>{
+    dispatch(listOrders());
     return() =>{
       //
     };
@@ -27,7 +26,10 @@ function DeliveryOrder(props) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(saveOrder({userName, parcelName, phone, receipient, destination}));
+    dispatch(saveOrder({
+      userName, parcelName, phone, 
+      receipient, destination
+    }));
   }
 
   
@@ -36,9 +38,8 @@ function DeliveryOrder(props) {
       <div className="container">
         <div className="dashboard-content-holder mb-3">
           <h3>PARCEL DELIVERY ORDER</h3>
-          <div className="dash-home">
-            <Link to="/">Home </Link> / Place Order
-          </div>
+          <button>Create Orders</button>
+   
         </div>
         <div className="order-section">
           <div className="card-1">
@@ -181,6 +182,44 @@ function DeliveryOrder(props) {
           </div>
         </div>
       </div>
+      <div className="deliver-table ">
+                  <h3>Delivery Orders</h3>  
+                  <table id="datatable" className="table table-striped table-bordered hidden-sm" cellspacing="0" width="100%">    
+                      
+                      <thead >
+                            <tr>
+                            <th>ID</th>                          
+                              <th>parcelName</th>
+                              <th>phone</th>
+                              <th>userName</th>
+                              <th> receipient</th>
+                              <th>destination</th>
+                              <th>status</th>
+                              <th>Action</th>
+                               
+                            </tr>
+                        </thead>
+                        <tbody>
+                           { orders.map( order => (<tr key={order._id}>                        
+                            <td>{order._id}</td>
+                            <td><Link className="link-text" to={"/order/" + order._id}>{order.parcelName}</Link></td>    
+                             <td>{order.phone}</td>
+                             <td>{order.userName}</td>                    
+                             <td>{order.receipient}</td>
+                             <td>{order.destination}</td>
+                             <td>{order.status}</td>
+                             <td>
+                <button type="button"  className="button secondary">Edit</button>
+                {' '}
+                <button type="button"  className="button secondary">Delete</button>
+              </td>
+                         </tr> ))}
+                                            
+                        </tbody>
+                        
+                    </table>
+                    
+                </div>
     </div>
   );
 }
