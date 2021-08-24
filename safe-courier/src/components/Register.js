@@ -102,7 +102,7 @@ function Register(props) {
 			<label class="form-check-label"><input type="checkbox" required="required"/> I accept the <Link to="/About">Terms of Use</Link> &amp; <Link to="/About">Privacy Policy</Link></label>
 		</div>
 		<div class="form-group">
-            <button type="submit" class="btn btn-lg">Sign Up</button>
+            <button type="submit" class="btn btn-lg">SignUp</button>
         </div>
         <div class="text-center">Already have an account? <Link to="/Login" >Login here</Link></div>
     </form>

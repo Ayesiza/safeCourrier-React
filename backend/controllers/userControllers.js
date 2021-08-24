@@ -25,6 +25,7 @@ require ('dotenv').config();
           });
         });
       },
+      
       login: (req, res) => {
         const { email, password } = req.body;
         User.findOne({ email }, (err, user) => {
