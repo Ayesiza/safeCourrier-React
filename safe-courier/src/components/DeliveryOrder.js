@@ -4,8 +4,10 @@ import { useSelector, useDispatch } from 'react-redux';
 import { listOrders, saveOrder } from '../actions/orderActions';
 
 
+
 function DeliveryOrder(props) {
-  
+ const [modalVisible, setModalVisible]  = useState(false)
+ const [id, setId]  = useState('')
   const [userName, setUserName] = useState('');
   const [parcelName, setParcelName] = useState('');
   const [phone, setPhone] = useState('');
@@ -22,7 +24,20 @@ function DeliveryOrder(props) {
     return() =>{
       //
     };
-  }, [])
+  }, []);
+
+  const openModel= (order) =>{
+   setModalVisible(true)
+   setId(order._id);
+   setUserName(order.userName); 
+   setParcelName(order.parcelName);
+   setDestination(order.destination);
+   setPhone(order.phone);
+   setReceipient(order.receipient);
+
+   
+  }
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -38,149 +53,154 @@ function DeliveryOrder(props) {
       <div className="container">
         <div className="dashboard-content-holder mb-3">
           <h3>PARCEL DELIVERY ORDER</h3>
-          <button>Create Orders</button>
+          <button onClick={()=>openModel({})}>Create Orders</button>
    
         </div>
-        <div className="order-section">
-          <div className="card-1">
-            <div className="container mt-5 ">
-              <div className="row">
-                <div className="col-md-1"></div>
-                <div className="col-md-10">
-                  <h5 className="text-center mb-3">
-                    Fill this Form to Create your Order
-                  </h5>
-                  <hr />
-                  <form className="" onSubmit={handleSubmit}>
-                   <div>
-                     {loadingSave && <div>Loading...</div>}
-                     {errorSave && <div>{errorSave}</div>}
-                   </div>
-                    <div className="form-group">
-                      <h5 className="form-title my-4">Sender's info</h5>
-                      <div className="row">
-                        <div className="col-md-6">
-                          <input
-                            onChange={(e) => setUserName(e.target.value)}
-                            type="text"
-                            className="form-control"
-                            placeholder="Your Name"
-                            name="userName"
-                            required="required"
-                          />
-                        </div>
+        {modalVisible &&
 
-                        <div className="col-md-6">
-                          <input
-                         onChange={(e) => setParcelName(e.target.value)}
-                            type="text"
-                            className="form-control"
-                            placeholder="Package Name"
-                            name="parcelName"
-                            required="required"
-                          />
-                        </div>
-                      </div>
-                    </div>
+<div className="order-section">
+<div className="card-1">
+  <div className="container mt-5 ">
+    <div className="row">
+      <div className="col-md-1"></div>
+      <div className="col-md-10">
+        <h5 className="text-center mb-3">
+          Fill this Form to Create your Order
+        </h5>
+        <hr />
+        <form className="" onSubmit={handleSubmit}>
+         <div>
+           {loadingSave && <div>Loading...</div>}
+           {errorSave && <div>{errorSave}</div>}
+         </div>
+          <div className="form-group">
+            <h5 className="form-title my-4">Sender's info</h5>
+            <div className="row">
+              <div className="col-md-6">
+                <input
+                  onChange={(e) => setUserName(e.target.value)}
+                  type="text"
+                  className="form-control"
+                  placeholder="Your Name"
+                  name="userName"
+                  required="required"
+                />
+              </div>
 
-                    <div className="form-group">
-                      <div className="row">
-                        <div className="col-md-6">
-                          <input
-                          
-                          onChange={(e) => setPhone(e.target.value)}
-                            type="tel"
-                            className="form-control"
-                            placeholder="Phone Contact"
-                            required="required"
-                            name="phone"
-                          />
-                        </div>
-                        <div className="col-md-6">
-                          <input
-                            onChange={(e) => setDestination(e.target.value)}
-                            type="text"
-                            className="form-control"
-                            placeholder="Destination"
-                            required="required"
-                            name="destination"
-                          />
-                        </div>
-                      </div>
-                    </div>
-                   
-
-                    <h5 className=" form-title my-4">Deliver To?</h5>
-
-                    <div className="form-group">
-                      <div className="row">
-                      <div className="col-md-6">
-                          <input
-                           onChange={(e) => setReceipient(e.target.value)}
-                            type="text"
-                            className="form-control"
-                            placeholder="receipient"
-                            required="required"
-                            name="receipient"
-                          />
-                        </div>
-                        <div className="col-md-6">
-                          <input
-                           onChange={(e) => setDestination(e.target.value)}
-                            type="text"
-                            className="form-control"
-                            placeholder="Address"
-                            required="required"
-                            name="destination"
-                          />
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="form-group">
-                      <div className="row">  
-                        <div className="col-md-6">
-                          <input
-                            onChange={(e) => setPhone(e.target.value)}
-                            type="tel"
-                            className="form-control"
-                            placeholder="Phone Number"
-                            required="required"
-                            name="phone"
-                          />
-                        </div>
-
-                        <div className="col-md-6">
-                          <input
-                            onChange={(e) => setPhone(e.target.value)}
-                            type="tel"
-                            className="form-control"
-                            placeholder="Phone Number"
-                            required="required"
-                            name="phone"
-                          />
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="row">
-                      <div className="col-md-12">
-                        <div className="btn-contain py-4">
-                          <button
-                            type="submit"
-                            className="btn btn-danger btn-block"
-                          >
-                            Create Order
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  </form>
-                </div>
+              <div className="col-md-6">
+                <input
+               onChange={(e) => setParcelName(e.target.value)}
+                  type="text"
+                  className="form-control"
+                  placeholder="Package Name"
+                  name="parcelName"
+                  required="required"
+                />
               </div>
             </div>
           </div>
-        </div>
+
+          <div className="form-group">
+            <div className="row">
+              <div className="col-md-6">
+                <input
+                
+                onChange={(e) => setPhone(e.target.value)}
+                  type="tel"
+                  className="form-control"
+                  placeholder="Phone Contact"
+                  required="required"
+                  name="phone"
+                />
+              </div>
+              <div className="col-md-6">
+                <input
+                  onChange={(e) => setDestination(e.target.value)}
+                  type="text"
+                  className="form-control"
+                  placeholder="Destination"
+                  required="required"
+                  name="destination"
+                />
+              </div>
+            </div>
+          </div>
+         
+
+          <h5 className=" form-title my-4">Deliver To?</h5>
+
+          <div className="form-group">
+            <div className="row">
+            <div className="col-md-6">
+                <input
+                 onChange={(e) => setReceipient(e.target.value)}
+                  type="text"
+                  className="form-control"
+                  placeholder="receipient"
+                  required="required"
+                  name="receipient"
+                />
+              </div>
+              <div className="col-md-6">
+                <input
+                 onChange={(e) => setDestination(e.target.value)}
+                  type="text"
+                  className="form-control"
+                  placeholder="Address"
+                  required="required"
+                  name="destination"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div className="form-group">
+            <div className="row">  
+              <div className="col-md-6">
+                <input
+                  onChange={(e) => setPhone(e.target.value)}
+                  type="tel"
+                  className="form-control"
+                  placeholder="Phone Number"
+                  required="required"
+                  name="phone"
+                />
+              </div>
+
+              <div className="col-md-6">
+                <input
+                  onChange={(e) => setPhone(e.target.value)}
+                  type="tel"
+                  className="form-control"
+                  placeholder="Phone Number"
+                  required="required"
+                  name="phone"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div className="row">
+            <div className="col-md-12">
+              <div className="btn-contain py-4">
+                <button
+                  type="submit"
+                  className="btn btn-danger btn-block"
+                >
+                  Create Order
+                </button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+        
+        }
+        
       </div>
       <div className="deliver-table ">
                   <h3>Delivery Orders</h3>  
@@ -209,7 +229,7 @@ function DeliveryOrder(props) {
                              <td>{order.destination}</td>
                              <td>{order.status}</td>
                              <td>
-                <button type="button"  className="button secondary">Edit</button>
+                <button type="button"  className="button secondary" onClick={()=>openModel(order)}>Edit</button>
                 {' '}
                 <button type="button"  className="button secondary">Delete</button>
               </td>
