@@ -8,6 +8,7 @@ const login = (email, password) =>async (dispatch) => {
         const {data} = await axios.post("/api/user/login", {email, password} )
         dispatch({type:USER_LOGIN_SUCCESS, payload:data})
         Cookie.set('userInfo', JSON.stringify(data))
+        localStorage.setItem("token", JSON.stringify(data))
     }catch (error){
        dispatch({type:USER_LOGIN_FAIL, payload:error.message});
     }
